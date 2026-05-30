@@ -5,7 +5,6 @@ terraform {
   bucket       = "myapp-terraform-state-arovm"
   key          = "myapp/dev/terraform.tfstate"
   region       = "us-east-1"
-  profile      = "arovm"
   use_lockfile = true
   encrypt      = true
 }
@@ -27,6 +26,5 @@ terraform {
 }
 
 provider "aws" {
-  profile = "arovm"
   region  = var.aws_region
 }

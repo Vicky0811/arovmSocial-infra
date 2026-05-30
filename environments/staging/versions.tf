@@ -5,7 +5,6 @@ terraform {
     bucket         = "myapp-terraform-state-arovm"
     key            = "myapp/staging/terraform.tfstate"
     region         = "us-east-1"
-    profile        = "arovm"
     dynamodb_table = "myapp-terraform-locks"
     encrypt        = true
   }
@@ -27,6 +26,5 @@ terraform {
 }
 
 provider "aws" {
-  profile = "arovm"
   region  = var.aws_region
 }
