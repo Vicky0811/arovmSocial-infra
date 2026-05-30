@@ -1,14 +1,14 @@
 terraform {
-  required_version = ">= 1.6.0, < 2.0.0"
+  required_version = ">= 1.10.0, < 2.0.0"
 
   backend "s3" {
-    bucket         = "myapp-terraform-state-arovm"
-    key            = "myapp/prod/terraform.tfstate"
-    region         = "us-east-1"
-    profile        = "arovm"
-    dynamodb_table = "myapp-terraform-locks"
-    encrypt        = true
-  }
+  bucket       = "myapp-terraform-state-arovm"
+  key          = "myapp/dev/terraform.tfstate"
+  region       = "us-east-1"
+  profile      = "arovm"
+  use_lockfile = true
+  encrypt      = true
+}
 
   required_providers {
     aws = {
