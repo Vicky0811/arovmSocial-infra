@@ -37,9 +37,9 @@ resource "aws_lb" "main" {
   security_groups    = [aws_security_group.alb_sg.id]
   subnets            = [var.public_subnet_id, var.public_subnet_id_2]
 
-  enable_deletion_protection = false  
+  enable_deletion_protection = false
 
-  tags               = var.common_tags
+  tags = var.common_tags
 }
 
 resource "aws_lb_target_group" "main" {

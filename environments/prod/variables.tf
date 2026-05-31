@@ -13,7 +13,7 @@ variable "project_name" {
 variable "environment" {
   type        = string
   description = "Deployment environment"
-  default     = "dev"
+  default     = "prod"
 }
 
 variable "vpc_cidr" {
@@ -24,8 +24,14 @@ variable "vpc_cidr" {
 
 variable "public_subnet_cidr" {
   type        = string
-  description = "CIDR block for the public subnet"
+  description = "CIDR block for the first public subnet"
   default     = "10.0.1.0/24"
+}
+
+variable "public_subnet_cidr_2" {
+  type        = string
+  description = "CIDR block for the second public subnet"
+  default     = "10.0.4.0/24"
 }
 
 variable "private_subnet_cidr" {
@@ -80,4 +86,22 @@ variable "db_instance_class" {
   type        = string
   description = "RDS instance class"
   default     = "db.t3.micro"
+}
+
+variable "min_size" {
+  type        = number
+  description = "Minimum EC2 instances in ASG"
+  default     = 1
+}
+
+variable "max_size" {
+  type        = number
+  description = "Maximum EC2 instances in ASG"
+  default     = 3
+}
+
+variable "desired_capacity" {
+  type        = number
+  description = "Desired EC2 instances in ASG"
+  default     = 2
 }
