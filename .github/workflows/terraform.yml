@@ -17,11 +17,14 @@ jobs:
     name: Terraform Plan
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
+    permissions:
+      contents: read
+      pull-requests: write    # ← needed to post PR comments
+      issues: write           # ← needed to post comments
 
     defaults:
       run:
         working-directory: ${{ env.TF_WORKING_DIR }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -76,7 +79,8 @@ jobs:
     name: Terraform Apply
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-
+    permissions:
+      contents: read
     defaults:
       run:
         working-directory: ${{ env.TF_WORKING_DIR }}
@@ -88,7 +92,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.6.0
+          terraform_version: 1.10.0
 
       - name: Terraform Init
         run: terraform init
