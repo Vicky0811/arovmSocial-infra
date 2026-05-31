@@ -20,7 +20,7 @@ aws_infra/
 
 ## Prerequisites
 
-- Terraform >= 1.6.0
+- Terraform >= 1.10.0
 - AWS CLI configured with profile `arovm`
 - Bootstrap must be run once before any environment
 
